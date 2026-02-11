@@ -1,0 +1,20 @@
+int ldr = A0;
+int relay = D5;
+
+void setup() {
+  pinMode(relay, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int lightValue = analogRead(ldr);
+  Serial.println(lightValue);
+
+  if (lightValue > 600) {   // Dark condition (adjust threshold)
+    digitalWrite(relay, HIGH);  // Light ON
+  } else {
+    digitalWrite(relay, LOW);   // Light OFF
+  }
+
+  delay(1000);
+}
